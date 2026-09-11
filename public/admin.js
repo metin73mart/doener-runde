@@ -15,7 +15,9 @@ function makeSummary(state){
   if(!state.orders.length) return `Hallo ${state.shopName || "Dönerbude"},\n\nnoch keine Bestellungen eingetragen.`;
   const lines = state.orders.map((o,i)=>{
     const d = details(o);
-    return `${i+1}. ${o.quantity}× ${o.item}${d ? " – " + d : ""} (${o.name})`;
+const sum = Number(o.total || 0).toFixed(2).replace(".", ",");
+
+return `${i+1}. ${o.quantity}× ${o.item}${d ? " – " + d : ""} (${o.name}) = ${sum} €`;
   });
   const total = state.orders.reduce((s,o)=>s+(Number(o.quantity)||1),0);
   return `Hallo ${state.shopName || "Dönerbude"},\n\nwir möchten gerne bestellen:\n\n${lines.join("\n")}\n\nGesamt: ${total} Gericht${total===1?"":"e"}.\nDanke!`;
