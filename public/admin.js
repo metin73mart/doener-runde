@@ -17,7 +17,7 @@ function makeSummary(state){
     const d = details(o);
 const sum = Number(o.total || 0).toFixed(2).replace(".", ",");
 
-return `${i+1}. ${o.quantity}× ${o.item}${d ? " – " + d : ""} (${o.name}) = ${sum} €`;
+return `${i+1}. ${o.quantity}× ${o.item}${d ? " – " + d : ""} = ${sum} €`;
   });
   const totalItems = state.orders.reduce(
 
