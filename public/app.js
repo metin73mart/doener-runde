@@ -4,7 +4,53 @@ const countEl = document.getElementById("count");
 const shopNameEl = document.getElementById("shopName");
 const deadlineText = document.getElementById("deadlineText");
 const msg = document.getElementById("msg");
+const PRICES = {
 
+  "Döner Kebap – 9,00 €": 9.00,
+
+  "Döner Kebap Spezial – 9,50 €": 9.50,
+
+  "Döner Kebap Antikya – 10,00 €": 10.00,
+
+  "Kebap Vegetarisch – 9,00 €": 9.00,
+
+  "Kebap Antikya Vegetarisch – 9,50 €": 9.50,
+
+  "Döner Box – 9,50 €": 9.50,
+
+  "Döner Box Antikya Vegetarisch – 9,50 €": 9.50,
+
+  "Döner Teller – 15,00 €": 15.00,
+
+  "Döner Teller Vegetarisch – 14,50 €": 14.50,
+
+  "İskender Kebap – 16,50 €": 16.50,
+
+  "Überbackung Antikya – 16,50 €": 16.50,
+
+  "Tagesteller – 16,50 €": 16.50,
+
+  "Döner Dürüm – 10,50 €": 10.50,
+
+  "Dürüm Vegetarisch – 10,00 €": 10.00,
+
+  "Dürüm Antikya – 11,50 €": 11.50,
+
+  "Dürüm Spezial – 11,00 €": 11.00,
+
+  "Döner Tasche – 15,00 €": 15.00,
+
+  "Lahmacun – 6,00 €": 6.00,
+
+  "Lahmacun mit Salat – 7,50 €": 7.50,
+
+  "Lahmacun Jumbo – 11,00 €": 11.00,
+
+  "Lahmacun Jumbo Spezial – 12,00 €": 12.00,
+
+  "Lahmacun Jumbo Antikya – 12,00 €": 12.00
+
+};
 function esc(s=""){
   return s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 }
@@ -35,7 +81,9 @@ form.addEventListener("submit", async e=>{
   const body = Object.fromEntries(fd.entries());
   body.extras = extras;
   body.quantity = Number(body.quantity || 1);
+body.price = PRICES[body.item] || 0;
 
+body.total = body.price * body.quantity;
   const res = await fetch("/api/order", {
     method:"POST",
     headers:{"Content-Type":"application/json"},
