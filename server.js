@@ -56,6 +56,9 @@ app.post("/api/order", (req, res) => {
     sauce: String(sauce || "").trim().slice(0, 80),
     extras: Array.isArray(extras) ? extras.map(String).slice(0, 20) : [],
     quantity: Math.min(10, Math.max(1, Number(quantity) || 1)),
+    price: Number(price) || 0,
+
+total: Number(total) || 0,
     note: String(note || "").trim().slice(0, 200),
     createdAt: new Date().toISOString()
   };
