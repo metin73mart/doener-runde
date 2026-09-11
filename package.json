@@ -1,0 +1,14 @@
+{
+  "name": "doener-sammelbestellung",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Mobile PWA für Döner-Sammelbestellungen mit QR-Code",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "qrcode": "^1.5.4"
+  }
+}
