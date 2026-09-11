@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Admin – Döner-Runde</title>
+  <meta name="theme-color" content="#111827">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hero">
+    <div>
+      <div class="eyebrow">ADMIN</div>
+      <h1>🥙 Sammelbestellung</h1>
+      <p>Hier fasst du alles zusammen und schickst nur noch eine Nachricht an die Dönerbude.</p>
+    </div>
+    <a href="/" class="ghost">Bestellseite</a>
+  </header>
+
+  <main class="wrap">
+    
+    <section class="card share-card">
+      <div>
+        <h2>Mit Kollegen teilen</h2>
+        <p class="muted">QR-Code zeigen oder den Link in eure Gruppe schicken. Jeder landet direkt auf der Bestellseite.</p>
+        <input id="shareUrl" readonly>
+        <div class="actions">
+          <button id="copyLink" class="secondary">Link kopieren</button>
+          <button id="nativeShare" class="secondary" hidden>Teilen</button>
+        </div>
+      </div>
+      <img id="qrCode" class="qr" alt="QR-Code zur Bestellseite">
+    </section>
+
+    <section class="card">
+      <h2>Einstellungen</h2>
+      <div class="grid2">
+        <label>Name der Dönerbude
+          <input id="shopNameInput" placeholder="Dönerbude">
+        </label>
+        <label>Bestellschluss
+          <input id="deadlineInput" type="datetime-local">
+        </label>
+      </div>
+      <button id="saveSettings" class="secondary">Speichern</button>
+    </section>
+
+    <section class="card">
+      <div class="section-head">
+        <h2>Bestellungen</h2>
+        <button id="reset" class="danger">Neue Runde starten</button>
+      </div>
+      <div id="adminOrders" class="orders"></div>
+    </section>
+
+    <section class="card">
+      <h2>Text für die Dönerbude</h2>
+      <textarea id="summary" rows="14" readonly></textarea>
+      <div class="actions">
+        <button id="copy" class="primary">Text kopieren</button>
+        <a id="whatsapp" class="secondary linkbtn" target="_blank" rel="noopener">Per WhatsApp öffnen</a>
+      </div>
+      <div id="adminMsg" class="msg"></div>
+    </section>
+  </main>
+
+  <script src="admin.js"></script>
+  <script src="pwa.js"></script>
+</body>
+</html>

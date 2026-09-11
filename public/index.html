@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Döner-Sammelbestellung</title>
+  <meta name="theme-color" content="#111827">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hero">
+    <div>
+      <div class="eyebrow">TEAM-BESTELLUNG</div>
+      <h1>🥙 Döner-Runde</h1>
+      <p>Jeder trägt seine Bestellung ein. Am Ende bekommst du eine saubere Sammelbestellung zum Kopieren oder per WhatsApp senden.</p>
+    </div>
+    <div class="header-actions"><button id="installBtn" class="ghost" hidden>App installieren</button><a href="admin.html" class="ghost">Admin öffnen</a></div>
+  </header>
+
+  <main class="wrap">
+    <section class="card">
+      <div class="status-row">
+        <div><strong id="shopName">Dönerbude</strong></div>
+        <div id="deadlineText" class="pill">Bestellung offen</div>
+      </div>
+
+      <form id="orderForm">
+        <div class="grid2">
+          <label>Dein Name
+            <input name="name" required placeholder="z. B. Alex">
+          </label>
+          <label>Gericht
+            <select name="item" required>
+              <option value="">Bitte wählen</option>
+              <option>Döner</option>
+              <option>Dürüm</option>
+              <option>Dönerbox</option>
+              <option>Lahmacun</option>
+              <option>Falafel</option>
+              <option>Vegetarischer Döner</option>
+              <option>Teller</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="grid3">
+          <label>Brot
+            <select name="bread">
+              <option value="">Standard</option>
+              <option>Fladenbrot</option>
+              <option>Yufka</option>
+              <option>Ohne Brot</option>
+            </select>
+          </label>
+          <label>Fleisch
+            <select name="meat">
+              <option value="">Standard</option>
+              <option>Hähnchen</option>
+              <option>Kalb</option>
+              <option>Gemischt</option>
+              <option>Ohne Fleisch</option>
+            </select>
+          </label>
+          <label>Soße
+            <select name="sauce">
+              <option value="">Standard</option>
+              <option>Knoblauch</option>
+              <option>Kräuter</option>
+              <option>Scharf</option>
+              <option>Cocktail</option>
+              <option>Ohne Soße</option>
+            </select>
+          </label>
+        </div>
+
+        <fieldset>
+          <legend>Extras</legend>
+          <div class="checks">
+            <label><input type="checkbox" value="mit Käse"> Käse</label>
+            <label><input type="checkbox" value="scharf"> Scharf</label>
+            <label><input type="checkbox" value="ohne Zwiebeln"> Ohne Zwiebeln</label>
+            <label><input type="checkbox" value="ohne Tomate"> Ohne Tomate</label>
+            <label><input type="checkbox" value="ohne Salat"> Ohne Salat</label>
+            <label><input type="checkbox" value="extra Fleisch"> Extra Fleisch</label>
+          </div>
+        </fieldset>
+
+        <div class="grid2">
+          <label>Anzahl
+            <input name="quantity" type="number" min="1" max="10" value="1">
+          </label>
+          <label>Bemerkung
+            <input name="note" placeholder="z. B. bitte sehr scharf">
+          </label>
+        </div>
+
+        <button type="submit" class="primary">Bestellung eintragen</button>
+        <div id="msg" class="msg"></div>
+      </form>
+    </section>
+
+    <section class="card">
+      <div class="section-head">
+        <h2>Aktuelle Bestellungen</h2>
+        <span id="count" class="pill"></span>
+      </div>
+      <div id="orders" class="orders"></div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+  <script src="pwa.js"></script>
+</body>
+</html>
