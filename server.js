@@ -43,7 +43,7 @@ app.get("/api/share", async (req, res) => {
 });
 
 app.post("/api/order", (req, res) => {
-  const { name, item, bread, meat, sauce, extras, quantity, note } = req.body;
+  const { name, item, bread, meat, sauce, extras, quantity, note, price, total } = req.body;
   if (!name || !item) return res.status(400).json({ error: "Name und Gericht sind Pflicht." });
 
   const data = readData();
