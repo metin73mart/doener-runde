@@ -19,10 +19,33 @@ const sum = Number(o.total || 0).toFixed(2).replace(".", ",");
 
 return `${i+1}. ${o.quantity}× ${o.item}${d ? " – " + d : ""} (${o.name}) = ${sum} €`;
   });
-  const totalItems = state.orders.reduce((s,o)=>s+(Number(o.quantity)||1),0);
+  const totalItems = state.orders.reduce(
 
-const totalPrice = state.orders.reduce((s,o)=>s+(Number(o.total)||0),0);
-  return `Hallo ${state.shopName || "Dönerbude"},\n\nwir möchten gerne bestellen:\n\n${lines.join("\n")}\n\nGesamt: ${total} Gericht${total===1?"":"e"}.\nDanke!`;
+  (s,o) => s + (Number(o.quantity) || 1),
+
+  0
+
+);
+
+const totalPrice = state.orders.reduce(
+
+  (s,o) => s + (Number(o.total) || 0),
+
+  0
+
+);
+
+return `Hallo ${state.shopName || "Dönerbude"},
+
+wir möchten gerne bestellen:
+
+${lines.join("\n")}
+
+Gesamt: ${totalItems} Gericht${totalItems === 1 ? "" : "e"}.
+
+Gesamtsumme: ${totalPrice.toFixed(2).replace(".", ",")} €.
+
+Danke!`;
 }
 async function load(){
   const state = await fetch("/api/state").then(r=>r.json());
